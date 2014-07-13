@@ -1,0 +1,11 @@
+.container
+	%h1 Movie
+	.movie-photo
+		= image_tag @movie.image
+	.movie-wrapper
+		%h3= "#{@movie.title} (#{@movie.year})"
+		%p= @movie.description
+
+	.link-wrapper
+		= link_to "Edit movie", edit_movie_path, class: "btn"
+		= link_to "All movies", movies_path, class: "btn"

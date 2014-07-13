@@ -1,0 +1,18 @@
+.container
+	%h1 All Movies
+
+	.search
+		= form_tag "/", method: "GET" do 
+			= text_field_tag :q, params[:q]
+			= submit_tag "Search"
+	= link_to "Add new film", new_movie_path, class: "btn btn-yellow"
+
+	%table
+		%tbody
+			%tr.table-header
+				%th.table-header-des Cover
+				%th.table-header-des Movie
+				%th.table-header-des Year
+				%th.table-header-des Description
+			%tr
+				= render partial: "movie", collection: @movies

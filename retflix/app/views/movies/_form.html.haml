@@ -1,0 +1,12 @@
+= form_for @movie do |f|
+	%fieldset
+		.fields
+			= f.label :title
+			= f.text_field :title
+		.fields
+			= f.label :year
+			= f.text_field :year
+		.fields
+			= f.label :description
+			= f.text_field :description
+	= f.submit 'Save'
