@@ -1,5 +1,5 @@
 = form_for @movie do |f|
-	%fieldset
+	%fieldset.film-form
 		.fields
 			= f.label :title
 			= f.text_field :title
@@ -9,4 +9,8 @@
 		.fields
 			= f.label :description
 			= f.text_field :description
-	= f.submit 'Save'
+		.fields
+			= f.label :image
+			= f.text_field :image
+
+	= f.submit 'Save', class: "btn btn-blue"

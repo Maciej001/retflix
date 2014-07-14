@@ -1,14 +1,15 @@
 class MoviesController < ApplicationController
 
-	before_action :load_movie, only: [:show, :edit, :update]
+	before_action :load_movie, only: [:show, :edit, :update, :destroy]
 
 	def new
 		@movie = Movie.new
 	end
 
 	def create
-		@movie = Movie.new(movie_params)
+		@movie = Movie.new movie_params 
 		if @movie.save 
+			flash[:notice] = "Movie added successfully!"
 			redirect_to @movie
 		else
 			render 'new'
@@ -26,7 +27,18 @@ class MoviesController < ApplicationController
 	end
 
 	def update
-		@movie.update movie_params
+		if @movie.update movie_params
+			flash[:notice] = "Movie updated successfully!"
+			redirect_to @movie
+		else
+			render 'edit'
+		end
+	end
+
+	def destroy
+		@movie.destroy
+		flash[:notice] = "'#{@movie.title}' deleted!"
+		redirect_to movies_path
 	end
 
 	private
@@ -36,7 +48,7 @@ class MoviesController < ApplicationController
 		end
 
   	def movie_params
-  		params.require(:movie).permit(:title, :year, :description)
+  		params.require(:movie).permit(:title, :year, :description, :image)
   	end
 
 end

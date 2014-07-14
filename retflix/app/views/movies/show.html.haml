@@ -6,6 +6,7 @@
 		%h3= "#{@movie.title} (#{@movie.year})"
 		%p= @movie.description
 
-	.link-wrapper
-		= link_to "Edit movie", edit_movie_path, class: "btn"
-		= link_to "All movies", movies_path, class: "btn"
+
+	= link_to "Edit movie", edit_movie_path, class: "btn btn-blue"
+	= link_to "All movies", movies_path, class: "btn btn-blue"
+	= link_to "Delete movie", @movie, method: :delete, class: "btn btn-red"

@@ -1,6 +1,11 @@
 %tr.film-row
 	%td= link_to image_tag(movie.image), movie
-	%td= link_to movie, movie
+	%td
+		.cell
+			= link_to movie, movie
+			%br/ 
+			%br/
+			= link_to "Delete", movie, method: :delete, class: "btn btn-small-red"
 	%td= movie.year
 	%td= movie.description
 	

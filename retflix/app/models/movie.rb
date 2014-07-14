@@ -11,6 +11,10 @@
 #
 
 class Movie < ActiveRecord::Base
+	validates :title, :description, :year, presence: true
+	validates :description, length: { minimum: 10 }
+	validates :year, numericality: { only_integer: true, greater_than: 0 }
+
 
 	def to_s
 		title

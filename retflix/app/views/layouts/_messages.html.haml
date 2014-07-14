@@ -1,4 +1,6 @@
-- flash.each do |name, msg|
-	- if msg.is_a?(String)
-		%div{class: "alert alert-#{name.to_s == 'notice' ? 'notice' : 'alert'}" }
-			= content_tag :h3, msg, :id => "flash_#{name}"
+.container
+	- if @movie
+		- if @movie.errors.any?
+			.messages
+				- @movie.errors.full_messages.each do |msg|
+					%h4 #{ msg }
